@@ -1,0 +1,293 @@
+{% extends "header.html" %} {% block body %}
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+	<script src="{{ url_for('static', filename='js/custom/team_stats.js') }}"></script>
+</head>
+<div class="container-fluid">
+	<br>
+	<div style=" text-align:center">
+		<h4>View team stats by division for the current season</h4>
+	</div>
+	<br>
+	<div class="alert alert-info alert-dismissible collapse" role="alert" id="info">
+		<strong>Request submitted</strong> : Please wait while the division stat being retrieved
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="alert alert-danger alert-dismissible collapse" role="alert" id="error-info">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<br>
+	<div class="row ">
+		<div class="col-md-12" style="background-color: OldLace">
+			<br>
+			<div id="accordion1">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseOne" aria-expanded="false"
+											aria-controls="collapseOne">
+										Atlantic
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Atlantic" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseOne" aria-expanded="false"
+												aria-controls="collapseOne" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion1">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Atlantic">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="accordion2">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingTwo">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseTwo" aria-expanded="false"
+											aria-controls="collapseTwo">
+										Central
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Central" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseTwo" aria-expanded="false"
+												aria-controls="collapseTwo" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion2">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Central">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="accordion3">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingThree">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseThree" aria-expanded="false"
+											aria-controls="collapseThree">
+										Southeast
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Southeast" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseThree" aria-expanded="false"
+												aria-controls="collapseThree" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion3">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Southeast">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="accordion4">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingFour">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseFour" aria-expanded="false"
+											aria-controls="collapseFour">
+										Northwest
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Northwest" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseFour" aria-expanded="false"
+												aria-controls="collapseFour" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion4">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Northwest">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="accordion5">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingFive">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseFive" aria-expanded="false"
+											aria-controls="collapseFive">
+										Pacific
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Pacific" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseFive" aria-expanded="false"
+												aria-controls="collapseFive" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion5">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Pacific">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="accordion6">
+				<div class="card" style="background-color: OldLace">
+					<div class="card-header" id="headingSix">
+						<h5 class="mb-0">
+							<div class="row ">
+								<div class="col-md-6" style="background-color: OldLace">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+											data-target="#collapseSix" aria-expanded="false"
+											aria-controls="collapseSix">
+										Southwest
+									</button>
+								</div>
+								<div class="col-md-6" style="background-color: OldLace">
+									<a href=# id="Southwest" class="division">
+										<button class="btn btn-default collapsed float-right" data-toggle="collapse"
+												data-target="#collapseSix" aria-expanded="false"
+												aria-controls="collapseSix" style="background-color: LightGray">
+											Get Stats
+										</button>
+									</a>
+								</div>
+							</div>
+						</h5>
+					</div>
+					<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion6">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col-md-12" style="background-color: OldLace">
+									<div class="card-header">
+										<h5 class="mb-0">
+											Standings
+										</h5>
+									</div>
+									<div class="card-body">
+										<table id="table_division_stats_Southwest">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
